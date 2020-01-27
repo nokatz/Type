@@ -2,9 +2,10 @@
 
 let text, typed; 
 let textString, typedString = "", substring;
+let index = 0;
 
 text = document.getElementById('text');
-textString = text.textContent;
+refreshText(index);
 
 typed = document.getElementById('typed');
 typed.contentEditable = 'true';
@@ -26,12 +27,42 @@ function typeKey(e){
 function checkText(){
 	
 	if(typedString !== subString){
+		
 		typed.style.color = "red";
+		
 	} else {
+		
 		typed.style.color = "black";
+		
 		if(typedString.length === textString.length){
+			
 			alert("Correct!");
+			
+			typed.textContent = "";
+			
+			if(index < strings.length - 1){
+				index++;
+			} else {
+				index = 0;
+			}
+			
+			refreshText(index);
 		}
 	}	
 	
 }
+
+function refreshText(index){
+
+	text.textContent = strings[index];
+	textString = text.textContent;
+
+}
+
+
+
+
+
+
+
+
