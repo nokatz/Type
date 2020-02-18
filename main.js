@@ -5,7 +5,16 @@ let textString, typedString = "", substring;
 let index = 0;
 
 text = document.getElementById('text');
-refreshText(index);
+let strings = [];
+
+readTextFile("/data/strings.txt", function(text){
+
+	strings = text.split(/\r?\n/g);
+    console.log(strings);
+	refreshText(index);
+
+});
+
 
 typed = document.getElementById('typed');
 typed.contentEditable = 'true';
